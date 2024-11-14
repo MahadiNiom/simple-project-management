@@ -19,8 +19,9 @@ return new class extends Migration
             $table->string('project_title');
             $table->longText('description');
             $table->integer('price');
-            $table->enum('status', ['pending', 'status'])->default('pending');
-            $table->timestamps();
+            $table->enum('status', ['pending', 'completed'])->default('pending');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 
